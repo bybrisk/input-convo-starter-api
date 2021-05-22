@@ -57,3 +57,19 @@ type startConvoParmsWrapper struct {
 	// required: true
 	Body data.InitialConversationRequest
 }
+
+// swagger:parameters getActionHandlers
+type getActionHandlerParmsWrapper struct {
+	// Data structure to get questions for a specific action handler
+	// in: body
+	// required: true
+	Body data.ActionHandlerRequest
+}
+
+// Response of the questions for a specific action handler
+// swagger:response actionHandlersResponse
+type actionHandlerResponseWrapper struct {
+	// response on getting questions for an action handler
+	// in: body
+	Body data.ActionHandlerResponse
+}

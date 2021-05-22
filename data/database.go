@@ -56,3 +56,37 @@ func IsUserRegistered(docID string) (bool,error) {
 	return isRegistered,err
 
 }
+
+func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) (*QuestionAndTypeStruct,error) {
+	collectionName := shashankMongo.DatabaseName.Collection("bot-schema")
+	filter := bson.M{"businessid": d.BusinessID}
+
+	var resp QuestionAndTypeStruct
+	var err error
+
+	//ActionHandler specific struct
+	if (d.ActionHandler == "order") {
+		//change Order to other action handlers
+		type HandlerResponseWrapper struct{
+			Order QuestionAndTypeStruct `json:"order"`
+		}
+		type ActionResponseWrapper struct{
+			Action HandlerResponseWrapper `json:"action"`
+		}
+	
+		var document ActionResponseWrapper
+
+		err = collectionName.FindOne(shashankMongo.CtxForDB, filter).Decode(&document)
+		if err != nil {
+			log.Error("GetQuestionForActionHandlerMongo ERROR:")
+			log.Error(err)
+		}
+
+		resp = QuestionAndTypeStruct{
+			Questions: document.Action.Order.Questions ,
+			QType: document.Action.Order.QType ,
+		}
+	}
+
+	return &resp,err
+}

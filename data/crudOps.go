@@ -32,3 +32,38 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 	}
 	return &response
 }
+
+func GetActionHandlerQuestion (d *ActionHandlerRequest) *ActionHandlerResponse{
+	var response ActionHandlerResponse
+	var EmptyArr []string
+	//isUserRegistered
+	isRegistered,registeredErr := IsUserRegistered(d.UserID)
+
+	if (!isRegistered || registeredErr!=nil) {
+		response= ActionHandlerResponse{
+			Questions: EmptyArr,
+			QType: EmptyArr,
+			ActionHandler: d.ActionHandler,
+			Response:"Error! User not registered!",
+		}
+	} else{
+		resp,err:= GetQuestionForActionHandlerMongo(d)
+		if err!=nil{
+			response= ActionHandlerResponse{
+				Questions: resp.Questions ,
+				QType: resp.QType ,
+				ActionHandler: d.ActionHandler,
+				Response:"Error! Some error occured!",
+			}
+		} else{
+			response= ActionHandlerResponse{
+				Questions: resp.Questions ,
+				QType: resp.QType ,
+				ActionHandler: d.ActionHandler,
+				Response:"success",
+			}
+		}
+	}
+
+	return &response
+}
