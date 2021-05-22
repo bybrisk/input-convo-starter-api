@@ -33,7 +33,7 @@ func (p *Input_Convo) Get_Action_Handlers (w http.ResponseWriter, r *http.Reques
 	} 
 
 	//add delivery to elastic search
-	response := data.UpdateDeliveryStatusCO(request)
+	response := data.GetActionHandlerQuestion(request)
 
 	//writing to the io.Writer
 	err = response.ActionHandlerResponseToJSON(w)
