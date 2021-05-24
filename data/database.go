@@ -37,6 +37,7 @@ func IsUserRegistered(docID string) (bool,error) {
 
 	type getData struct {
 		Phonenumber string `json:"phonenumber"`
+		UserName string `json:"username"`
 	}
 
 	var document getData
@@ -47,14 +48,16 @@ func IsUserRegistered(docID string) (bool,error) {
 		log.Error(err)
 	}
 
-	if err!=nil{
+	if err!=nil {
 		isRegistered = false
 	} else {
-		isRegistered = true
+		if document.UserName == "" {
+			isRegistered = false
+		} else {
+			isRegistered = true
+		}
 	}
-
 	return isRegistered,err
-
 }
 
 func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) (*QuestionAndTypeStruct,error) {

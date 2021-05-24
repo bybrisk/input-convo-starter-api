@@ -36,6 +36,8 @@ func (p *Input_Convo) Get_Action_Handlers (w http.ResponseWriter, r *http.Reques
 	response := data.GetActionHandlerQuestion(request)
 
 	//writing to the io.Writer
+	w.Header().Set("Content-Type", "application/json")
+	
 	err = response.ActionHandlerResponseToJSON(w)
 	if err!=nil {
 		http.Error(w,"Data with ID failed to marshel",http.StatusInternalServerError)		

@@ -36,6 +36,8 @@ func (p *Input_Convo) Get_Conversation_Initials (w http.ResponseWriter, r *http.
 	response := data.GetInitialConversationCRUDOPS(request)
 
 	//writing to the io.Writer
+	w.Header().Set("Content-Type", "application/json")
+	
 	err = response.InitialConversationResponseToJSON(w)
 	if err!=nil {
 		http.Error(w,"Data with ID failed to marshel",http.StatusInternalServerError)		
