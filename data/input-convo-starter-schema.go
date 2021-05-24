@@ -16,6 +16,10 @@ type InitialConversationResponse struct{
 
 	//Response message
 	Response string `json:"response"`
+
+	//status code
+	//
+	Status int64 `json:"status"`
 }
 
 //post request for getting the inital conversation of a business
@@ -71,6 +75,10 @@ type ActionHandlerResponse struct{
 	// API response message
 	//
 	Response string `json:"response"`
+
+	//status code
+	//
+	Status int64 `json:"status"`
 }
 
 type QuestionAndTypeStruct struct{

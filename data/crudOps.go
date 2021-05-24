@@ -13,6 +13,7 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 			Message:"",
 			ActionHandlers:actionHandlerArray,
 			Response:"Error! User not registered!",
+			Status:403,
 		}
 	} else{
 		resp,err:= GetInitialConversationMongo(d.BusinessID)
@@ -21,12 +22,14 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 				Message:"",
 				ActionHandlers:actionHandlerArray,
 				Response:"Error! Some error occured!",
+				Status:501,
 			}
 		} else{
 			response= InitialConversationResponse{
 				Message:resp.Message,
 				ActionHandlers:resp.ActionHandlers,
 				Response:"success",
+				Status:200,
 			}
 		}
 	}
@@ -45,6 +48,7 @@ func GetActionHandlerQuestion (d *ActionHandlerRequest) *ActionHandlerResponse{
 			QType: EmptyArr,
 			ActionHandler: d.ActionHandler,
 			Response:"Error! User not registered!",
+			Status:403,
 		}
 	} else{
 		resp,err:= GetQuestionForActionHandlerMongo(d)
@@ -54,6 +58,7 @@ func GetActionHandlerQuestion (d *ActionHandlerRequest) *ActionHandlerResponse{
 				QType: resp.QType ,
 				ActionHandler: d.ActionHandler,
 				Response:"Error! Some error occured!",
+				Status:501,
 			}
 		} else{
 			response= ActionHandlerResponse{
@@ -61,6 +66,7 @@ func GetActionHandlerQuestion (d *ActionHandlerRequest) *ActionHandlerResponse{
 				QType: resp.QType ,
 				ActionHandler: d.ActionHandler,
 				Response:"success",
+				Status:200,
 			}
 		}
 	}
