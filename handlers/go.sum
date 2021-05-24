@@ -7,6 +7,8 @@ github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210427090830-4d7b517a01
 github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210427090830-4d7b517a0152/go.mod h1:G29FZIvD453soGa4wcTHGNvU9A6lDlYyI4keLQ/wo60=
 github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210522100320-7a0b3e000584 h1:XZZScYqxcXm0zZLs57eoudctfDL/fAi/7gAIxrvAXrk=
 github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210522100320-7a0b3e000584/go.mod h1:G29FZIvD453soGa4wcTHGNvU9A6lDlYyI4keLQ/wo60=
+github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210524105125-7fb6751b6e1f h1:BN5HM09y6ysQ6WZ7YkoGbkIlMSZbOHCz6bgmdo7nfSg=
+github.com/bybrisk/input-convo-starter-api/data v0.0.0-20210524105125-7fb6751b6e1f/go.mod h1:G29FZIvD453soGa4wcTHGNvU9A6lDlYyI4keLQ/wo60=
 github.com/bybrisk/structs v0.0.0-20201109044720-899a1e012b8c/go.mod h1:+ozPcEcgRTvbDXzFyBlUTgv1G2niBpEsIzF5tySMIck=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
