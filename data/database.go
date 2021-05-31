@@ -60,11 +60,12 @@ func IsUserRegistered(docID string) (bool,error) {
 	return isRegistered,err
 }
 
-func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) (*QuestionAndTypeStruct,error) {
+func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) ([]QuestionObjectArray,error) {
 	collectionName := shashankMongo.DatabaseName.Collection("bot-schema")
 	filter := bson.M{"businessid": d.BusinessID}
 
 	var resp QuestionAndTypeStruct
+	var emptyStringArray []string
 	var err error
 
 	//ActionHandler specific struct
@@ -88,8 +89,22 @@ func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) (*QuestionAndTyp
 		resp = QuestionAndTypeStruct{
 			Questions: document.Action.Order.Questions ,
 			QType: document.Action.Order.QType ,
+			QContext: document.Action.Order.QContext,
 		}
 	}
 
-	return &resp,err
+	var objArrayResponse []QuestionObjectArray
+	
+	for i:=0; i < len(resp.Questions); i++ {
+		objResponse := QuestionObjectArray{
+			Question: resp.Questions[i],
+			ResponseType: resp.QType[i],
+			QuestionContext: resp.QContext[i],
+			CustomResponseChoice: emptyStringArray,		
+			}
+		
+			objArrayResponse = append(objArrayResponse,objResponse)
+	}
+
+	return objArrayResponse,err
 }

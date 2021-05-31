@@ -6,7 +6,7 @@ import (
 	"github.com/bybrisk/input-convo-starter-api/data"
 )
 
-func TestGetInitialConversationCRUDOPS(t *testing.T) {
+/*func TestGetInitialConversationCRUDOPS(t *testing.T) {
 
 	payload := &data.InitialConversationRequest{
 		UserID: "6083dafb171b889e90c5c7aa",
@@ -16,9 +16,9 @@ func TestGetInitialConversationCRUDOPS(t *testing.T) {
 	res:= data.GetInitialConversationCRUDOPS(payload) 
 
 	fmt.Println(res)
-}
+}*/
 
-/*func TestGetActionHandlerQuestion(t *testing.T) {
+func TestGetActionHandlerQuestion(t *testing.T) {
 
 	payload := &data.ActionHandlerRequest{
 		ActionHandler:"order",
@@ -29,4 +29,4 @@ func TestGetInitialConversationCRUDOPS(t *testing.T) {
 	res:= data.GetActionHandlerQuestion(payload) 
 
 	fmt.Println(res)
-}*/
+}

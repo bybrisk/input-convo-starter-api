@@ -68,6 +68,10 @@ type ActionHandlerResponse struct{
 	//
 	QType []string `json: "qType"`
 
+	//Question objects array
+	//
+	QuestionArray []QuestionObjectArray `json:"questionArray"`
+
 	// Action handler
 	//
 	ActionHandler string `json: "actionHandler"`
@@ -84,6 +88,26 @@ type ActionHandlerResponse struct{
 type QuestionAndTypeStruct struct{
 	Questions []string `json:"questions"`
 	QType []string `json:"qtype"` 
+	QContext []string `json:qcontext`
+}
+
+type QuestionObjectArray struct {
+
+	//Question to be displayed
+	//
+	Question string `json:"question"`
+
+	//Type of response expected (needed for setting the UI)
+	//
+	ResponseType string `json:"responseType"`
+	
+	//Context of the question (helps to prepare the payload)
+	//
+	QuestionContext string `json:"questionContext"`
+
+	//Choice of response provided by the business
+	//
+	CustomResponseChoice []string `json:"customResponseChoice"` 
 }
 
 func (d *InitialConversationRequest) ValidateInitialConversationRequest() error {
