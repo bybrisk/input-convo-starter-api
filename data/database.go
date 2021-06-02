@@ -65,7 +65,6 @@ func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) ([]QuestionObjec
 	filter := bson.M{"businessid": d.BusinessID}
 
 	var resp QuestionAndTypeStruct
-	var emptyStringArray []string
 	var err error
 
 	//ActionHandler specific struct
@@ -90,6 +89,7 @@ func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) ([]QuestionObjec
 			Questions: document.Action.Order.Questions ,
 			QType: document.Action.Order.QType ,
 			QContext: document.Action.Order.QContext,
+			QCustomResponseChoice: document.Action.Order.QCustomResponseChoice,
 		}
 	}
 
@@ -100,7 +100,7 @@ func GetQuestionForActionHandlerMongo (d *ActionHandlerRequest) ([]QuestionObjec
 			Question: resp.Questions[i],
 			ResponseType: resp.QType[i],
 			QuestionContext: resp.QContext[i],
-			CustomResponseChoice: emptyStringArray,		
+			CustomResponseChoice: resp.QCustomResponseChoice[i],		
 			}
 		
 			objArrayResponse = append(objArrayResponse,objResponse)

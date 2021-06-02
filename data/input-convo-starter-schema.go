@@ -89,6 +89,7 @@ type QuestionAndTypeStruct struct{
 	Questions []string `json:"questions"`
 	QType []string `json:"qtype"` 
 	QContext []string `json:qcontext`
+	QCustomResponseChoice [][]string `json:"qcustomresponsechoice"`
 }
 
 type QuestionObjectArray struct {
