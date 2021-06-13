@@ -62,11 +62,11 @@ type ActionHandlerRequest struct{
 type ActionHandlerResponse struct{
 	// Questions to prepare the payload 
 	//
-	Questions []string `json: "questions"`
+	//Questions []string `json: "questions"`
 
 	// Question type for adjusting the UI
 	//
-	QType []string `json: "qType"`
+	//QType []string `json: "qType"`
 
 	//Question objects array
 	//
@@ -109,6 +109,44 @@ type QuestionObjectArray struct {
 	//Choice of response provided by the business
 	//
 	CustomResponseChoice []string `json:"customResponseChoice"` 
+
+	//Type of question bot asks
+	//
+	QuestionType string `json:"questionType"`
+
+	//Card object for the question
+	//
+	QestionCard cardObject `json:"questionCard"`
+
+	//Card object for the answer
+	//
+	AnswerCard []cardObject `json:"answerCard"`
+}
+
+type cardObject struct{
+    //URL of the pic on the card
+	//
+	CardPic string `json:"cardPic"`
+
+	//Card title
+	//
+	Title string `json:"title"`
+
+	//Subtitle of the card
+	//
+	SubTitle string `json:"subtitle"`
+
+	//Story on the card
+	//
+	Story string `json:"story"`
+
+	//Top right data on the card
+	//
+	TopRightData string `json:"topRightData"`
+
+	//Bottom Right Data of the card
+	//
+	BottomRightData string `json:"bottomRightData"`
 }
 
 func (d *InitialConversationRequest) ValidateInitialConversationRequest() error {
