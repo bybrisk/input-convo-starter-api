@@ -110,7 +110,7 @@ type QuestionObjectArray struct {
 	//
 	CustomResponseChoice []string `json:"customResponseChoice"` 
 
-	//Type of question bot asks
+	//Type of question bot asks Text Card
 	//
 	QuestionType string `json:"questionType"`
 
