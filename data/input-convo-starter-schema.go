@@ -14,6 +14,10 @@ type InitialConversationResponse struct{
 	//
 	ActionHandlers []string `json: "actionHandlers"`
 
+	//Card object for initial conversation response
+	//
+	QCard cardObject `json:"qCard"`
+
 	//Response message
 	Response string `json:"response"`
 

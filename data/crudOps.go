@@ -4,6 +4,7 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 	
 	var response InitialConversationResponse
 	var actionHandlerArray []string
+	var emptyCardObject cardObject
 
 	//isUserRegistered
 	isRegistered,registeredErr := IsUserRegistered(d.UserID)
@@ -12,6 +13,7 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 		response= InitialConversationResponse{
 			Message:"",
 			ActionHandlers:actionHandlerArray,
+			QCard: emptyCardObject,
 			Response:"Error! User not registered!",
 			Status:403,
 		}
@@ -21,6 +23,7 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 			response= InitialConversationResponse{
 				Message:"",
 				ActionHandlers:actionHandlerArray,
+				QCard: emptyCardObject,
 				Response:"Error! Some error occured!",
 				Status:501,
 			}
@@ -28,6 +31,7 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 			response= InitialConversationResponse{
 				Message:resp.Message,
 				ActionHandlers:resp.ActionHandlers,
+				QCard: resp.QCard,
 				Response:"success",
 				Status:200,
 			}
