@@ -9,8 +9,8 @@ import (
 func TestGetInitialConversationCRUDOPS(t *testing.T) {
 
 	payload := &data.InitialConversationRequest{
-		UserID: "60d226ba17c0232bfca72135",
-		BusinessID: "607f23f644956a457f5f2770",
+		UserID: "60b246f9ff392f363c406fd3",
+		BusinessID: "TESTID",
 	}
 
 	res:= data.GetInitialConversationCRUDOPS(payload) 

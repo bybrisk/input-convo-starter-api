@@ -3,7 +3,7 @@ package data
 func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConversationResponse{
 	
 	var response InitialConversationResponse
-	var actionHandlerArray []string
+	var actionHandlerArray []ActionHandlerObject
 	var emptyCardObject cardObject
 
 	//isUserRegistered
@@ -11,7 +11,6 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 
 	if (!isRegistered || registeredErr!=nil) {
 		response= InitialConversationResponse{
-			Message:"",
 			ActionHandlers:actionHandlerArray,
 			QCard: emptyCardObject,
 			Response:"Error! User not registered!",
@@ -21,7 +20,6 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 		resp,err:= GetInitialConversationMongo(d.BusinessID)
 		if err!=nil{
 			response= InitialConversationResponse{
-				Message:"",
 				ActionHandlers:actionHandlerArray,
 				QCard: emptyCardObject,
 				Response:"Error! Some error occured!",
@@ -29,10 +27,9 @@ func GetInitialConversationCRUDOPS(d *InitialConversationRequest) *InitialConver
 			}
 		} else{
 			response= InitialConversationResponse{
-				Message:resp.Message,
 				ActionHandlers:resp.ActionHandlers,
 				QCard: resp.QCard,
-				Response:"success",
+				Response:"successfully found intial conversation!",
 				Status:200,
 			}
 		}

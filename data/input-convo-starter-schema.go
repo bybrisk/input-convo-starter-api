@@ -8,11 +8,11 @@ import (
 type InitialConversationResponse struct{
 	// Message the business wants the user to see.
 	//
-	Message string `json: "message"`
+	//Message string `json: "message"`
 
 	// The action handler which decides which API to fire
 	//
-	ActionHandlers []string `json: "actionHandlers"`
+	ActionHandlers []ActionHandlerObject `json: "actionHandlers"`
 
 	//Card object for initial conversation response
 	//
@@ -24,6 +24,31 @@ type InitialConversationResponse struct{
 	//status code
 	//
 	Status int64 `json:"status"`
+}
+
+type ActionHandlerObject struct{
+	//Handler for API use
+	//
+	Handler string `json:"handler"`
+
+	//Observed name of the action handler
+	//
+	ObservedName string `json:"observedName"`
+	
+	//Type of handler API STATIC
+	//
+	HandlerType string `json:"handlerType"`
+	
+	//API object data
+	//
+	ApiObject LambdaAPIObject `json:"apiObject"`
+
+}
+
+type LambdaAPIObject struct {
+	//Public URL of the API
+	//
+	ApiURL string `json:"apiURL"`
 }
 
 //post request for getting the inital conversation of a business
